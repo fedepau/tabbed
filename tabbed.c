@@ -332,6 +332,7 @@ drawbar(void)
 	XftColor *col;
 	int c, cc, fc, width, nbh;
 	char *name = NULL;
+	char tabtitle[256];
 
 	nbh = barvisibility ? vbh : 0;
 	if (nbh != bh) {
@@ -382,7 +383,9 @@ drawbar(void)
 		} else {
 			col = clients[c]->urgent ? dc.urg : dc.norm;
 		}
-		drawtext(clients[c]->name, col);
+		snprintf(tabtitle, sizeof(tabtitle), "%d: %s",
+		         c + 1, clients[c]->name);
+		drawtext(tabtitle, col);
 		dc.x += dc.w;
 		clients[c]->tabx = dc.x;
 	}
