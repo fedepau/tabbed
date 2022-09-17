@@ -1,3 +1,5 @@
 tabbed
 xembed
 *.o
+*.orig
+*.rej
